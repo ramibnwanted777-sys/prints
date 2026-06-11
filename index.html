@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRINT-TECH | طباعة على المنتجات - طابع مخصص للهدايا والدعاية</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #fefcf5;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1e6;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d97706;
+            border-radius: 10px;
+        }
+
+        /* الهيدر */
+        .header {
+            background: #1f2937;
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(to left, #f59e0b, #f97316);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .logo p {
+            font-size: 0.8rem;
+            color: #cbd5e1;
+        }
+        .nav-links a {
+            color: #e2e8f0;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .nav-links a:hover {
+            color: #fbbf24;
+        }
+        .fb-btn {
+            background: #1877f2;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            color: white !important;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .fb-btn:hover {
+            background: #0e62c9;
+            transform: scale(1.02);
+        }
+
+        /* القسم الرئيسي */
+        .hero {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            position: relative;
+        }
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        .hero-content .highlight {
+            color: #ea580c;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #374151;
+            margin-bottom: 2rem;
+        }
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-primary {
+            background: #ea580c;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #c2410c;
+            transform: translateY(-3px);
+        }
+        .btn-outline {
+            border: 2px solid #ea580c;
+            color: #ea580c;
+            background: white;
+        }
+        .btn-outline:hover {
+            background: #ea580c;
+            color: white;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #f59e0b;
+            margin: 0.8rem auto 0;
+            border-radius: 5px;
+        }
+
+        /* المنتجات التي نطبع عليها */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        .product-card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border: 1px solid #fde68a;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px rgba(234,88,12,0.15);
+            border-color: #f59e0b;
+        }
+        .product-icon {
+            font-size: 3rem;
+            color: #ea580c;
+            margin-bottom: 1rem;
+        }
+        .product-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* تقنيات الطباعة */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .tech-card {
+            background: #1f2937;
+            color: white;
+            border-radius: 24px;
+            padding: 2rem;
+            text-align: center;
+        }
+        .tech-card i {
+            font-size: 2.5rem;
+            color: #fbbf24;
+            margin-bottom: 1rem;
+        }
+
+        /* معرض مصغر */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        .gallery-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            padding: 1rem;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+
+        .fb-card {
+            background: linear-gradient(145deg, #ffffff, #fffbeb);
+            border-radius: 40px;
+            text-align: center;
+            padding: 2.5rem;
+            margin-top: 2rem;
+            border: 2px solid #fde68a;
+        }
+        .fb-card a {
+            color: #1877f2;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .canonical {
+            background: #fef3c7;
+            padding: 0.5rem 1rem;
+            border-radius: 60px;
+            display: inline-block;
+            font-family: monospace;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+        }
+
+        .footer {
+            background: #1f2937;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2rem; }
+            .nav-container { flex-direction: column; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="nav-container">
+        <div class="logo">
+            <h1>PRINT-TECH</h1>
+            <p>طابع على المنتجات | هدايا مخصصة | دعاية وإعلان</p>
+        </div>
+        <div class="nav-links">
+            <a href="#products">المنتجات</a>
+            <a href="#tech">تقنياتنا</a>
+            <a href="#gallery">أعمالنا</a>
+            <a href="https://www.facebook.com/people/PRINT-TECH/61587106138072/" target="_blank" class="fb-btn">
+                <i class="fab fa-facebook-f"></i> فيسبوك
+            </a>
+        </div>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>PRINT-TECH <span class="highlight">طابع على المنتجات</span></h1>
+        <p>نحوِّل منتجاتك العادية إلى أدوات تسويقية وإعلانية مميزة | طباعة الشعارات والتصاميم على الأكواب، التيشيرتات، الحقائب، الإكسسوارات، وأكثر من 50 منتجًا</p>
+        <div class="btn-group">
+            <a href="#products" class="btn btn-primary">استعرض المنتجات</a>
+            <a href="https://www.facebook.com/people/PRINT-TECH/61587106138072/" target="_blank" class="btn btn-outline">
+                <i class="fab fa-facebook-f"></i> تابعنا على فيسبوك
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="products" class="container">
+    <h2 class="section-title">نطبع على هذه المنتجات</h2>
+    <div class="products-grid">
+        <div class="product-card"><i class="fas fa-mug-hot product-icon"></i><h3>أكواب و ماجات</h3><p>طباعة حرارية بألوان ثابتة</p></div>
+        <div class="product-card"><i class="fas fa-tshirt product-icon"></i><h3>تيشيرتات و هوديز</h3><p>طباعة رقمية مباشرة و سلك سكرين</p></div>
+        <div class="product-card"><i class="fas fa-bag-shopping product-icon"></i><h3>حقائب و شنط</h3><p>طباعة على القماش و الجلد الطبيعي</p></div>
+        <div class="product-card"><i class="fas fa-mobile-alt product-icon"></i><h3>إكسسوارات جوال</h3><p>كفرات، باور بانك، حوامل سيارة</p></div>
+        <div class="product-card"><i class="fas fa-clock product-icon"></i><h3>ساعات و إكسسوارات</h3><p>طباعة الشعار بدقة عالية</p></div>
+        <div class="product-card"><i class="fas fa-laptop product-icon"></i><h3>لابتوب و ماوس</h3><p>طباعة على الهدايا التقنية</p></div>
+        <div class="product-card"><i class="fas fa-id-card product-icon"></i><h3>بطاقات تعريف و كروت</h3><p>طباعة رقمية فاخرة</p></div>
+        <div class="product-card"><i class="fas fa-gift product-icon"></i><h3>هدايا ترويجية</h3><p>أقلام، مفاتيح، سلاسل، مجات سفر</p></div>
+    </div>
+</section>
+
+<section id="tech" class="container" style="background: #fef9e6; border-radius: 48px; margin: 2rem auto;">
+    <h2 class="section-title">تقنيات الطابع التي نعتمدها</h2>
+    <div class="tech-grid">
+        <div class="tech-card"><i class="fas fa-fire"></i><h3>طباعة حرارية (Heat Press)</h3><p>للمجات، التيشيرتات، و الألواح الخشبية</p></div>
+        <div class="tech-card"><i class="fas fa-fill-drip"></i><h3>طباعة سلك سكرين (Silk Screen)</h3><p>للكميات الكبيرة و الأقمشة</p></div>
+        <div class="tech-card"><i class="fas fa-print"></i><h3>طباعة رقمية مباشرة DTF / UV</h3><p>على أي خامة تقريبًا بجودة احترافية</p></div>
+        <div class="tech-card"><i class="fas fa-laser"></i><h3>حفر و نقش بالليزر</h3><p>على الخشب، الأكريليك، الجلد، والمعادن</p></div>
+    </div>
+</section>
+
+<section id="gallery" class="container">
+    <h2 class="section-title">أمثلة من أعمالنا (طابع على المنتجات)</h2>
+    <div class="gallery">
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1603201667141-5a2d5b6d2e6c?w=400&auto=format" alt="طابع على كوب"><p>أكوب مخصصة مع شعارات</p></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&auto=format" alt="طباعة على تيشيرت"><p>تيشيرتات تصميم مخصص</p></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1602143408252-790ef5f8c1f4?w=400&auto=format" alt="حقيبة مطبوعة"><p>حقائب قطنية مطبوعة</p></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1561154464-82e9adf32764?w=400&auto=format" alt="طابع على كفر جوال"><p>كفرات جوال بشعارات</p></div>
+    </div>
+</section>
+
+<section id="contact" class="container">
+    <div class="fb-card">
+        <i class="fab fa-facebook" style="font-size: 3rem; color:#1877f2;"></i>
+        <h2 style="margin: 0.5rem 0;">اطلب الآن من PRINT-TECH</h2>
+        <p>لطلب طباعة مخصصة على المنتجات، عروض الشركات، الهدايا الترويجية، أو حتى قطعة واحدة .. زُر صفحتنا على فيسبوك وتواصل معنا مباشرة</p>
+        <a href="https://www.facebook.com/people/PRINT-TECH/61587106138072/" target="_blank">facebook.com/people/PRINT-TECH/61587106138072</a>
+        <div class="canonical">
+            🔗 الرابط الأساسي (Canonical): https://www.facebook.com/people/PRINT-TECH/61587106138072/
+        </div>
+        <p style="margin-top: 1.5rem; font-size: 0.85rem;">⭐ ملاحظة: نظرًا لسياسة خصوصية فيسبوك، قد لا تظهر تفاصيل المنشورات الكاملة بدون تسجيل دخول، لكن يمكنك فتح الرابط لمشاهدة كامل المنتجات، المعرض، وطرق التواصل مع فريق PRINT-TECH.</p>
+    </div>
+</section>
+
+<footer class="footer">
+    <p>© 2026 PRINT-TECH – الطابع على المنتجات، الهدايا المخصصة، الدعاية والإعلان</p>
+    <p style="margin-top: 0.5rem;">
+        <i class="fab fa-facebook"></i>  
+        <a href="https://www.facebook.com/people/PRINT-TECH/61587106138072/" target="_blank" style="color:#fbbf24;">صفحتنا الرسمية على فيسبوك</a>
+    </p>
+</footer>
+
+</body>
+</html>
